@@ -66,14 +66,14 @@ Backend:
 
 
 ```
-### 🐳 Docker Usage Notice  
-During development, Docker was initially considered for environment management. However, the build process turned out to be inefficient due to the lack of an initial `requirements.txt` file. To generate one, the following command was used:
+## 🔧 Running Redis using Docker
 
-```sh
-pip freeze > requirements.txt
-```
+To run this project, Redis is required. If you have Docker installed, follow these quick steps:
 
-This included many irrelevant dependencies, causing lengthy Docker build times. Even after cleaning up the file manually, the performance didn’t improve significantly. As a result, Docker was excluded from the final setup.
+### 🚀 Start Redis with Docker
+```bash
+docker run -d -p 6379:6379 --name redis-server redis
+
 
 ---
 

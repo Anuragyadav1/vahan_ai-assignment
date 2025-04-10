@@ -17,12 +17,17 @@ An intelligent, LLM-based chatbot engineered to handle user queries with context
 
 ---
 
-## 🧰 Tech Stack
+## 🧰 Tech Stack and Technologies Used
 
 - **Backend:** FastAPI, Python, LangChain, LangGraph, HuggingFace, LLM  
 - **Storage:** Redis (chat history), ChromaDB (embeddings)  
 - **Containerization:** Docker & Docker Compose (optional)  
-- **Testing:** Postman  
+- **Testing:** Postman
+
+- **LangGraph** – Manages node-based flow execution
+- **LangChain** – Orchestrates LLM-based workflows
+- **ChromaDB** – Handles semantic search with vector embeddings
+- **Redis** – Stores session-level chat history 
 
 ---
 
@@ -80,10 +85,7 @@ This project uses a modular architecture powered by LangGraph, LangChain, Redis,
 
 ## 🔧 Technologies Used
 
-- **LangGraph** – Manages node-based flow execution
-- **LangChain** – Orchestrates LLM-based workflows
-- **ChromaDB** – Handles semantic search with vector embeddings
-- **Redis** – Stores session-level chat history
+
 
 ---
 

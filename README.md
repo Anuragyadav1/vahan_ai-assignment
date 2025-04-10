@@ -61,68 +61,99 @@ Backend:
 
 
 ```
-### **Note:** 
-I tried using Docker for this project, but the build process was taking too much time. Since I was running the backend in a Python environment, I had not stored any dependencies in a requirements.txt file. However, when I included Docker, I needed the requirements.txt file, so I generated it using the command: 
+### 🐳 Docker Usage Notice  
+During development, Docker was initially considered for environment management. However, the build process turned out to be inefficient due to the lack of an initial `requirements.txt` file. To generate one, the following command was used:
+
 ```sh
 pip freeze > requirements.txt
 ```
-This added all the dependencies from my Python environment, including some that were not used in the project. I manually removed the unnecessary dependencies, but some were still causing long build times in Docker.
-Due to this, I decided not to use Docker for setting up the project.
-### **🏗 Projects Architecture**
-This project utilizes LangGraph, LangChain, and ChromaDB for handling text embeddings and managing conversational flow. Below is the architectural breakdown of how different components interact to process user queries efficiently.
-## Components Used
--  **LangGraph :** Enables a structured flow of execution with four nodes and one tool.  
--  **ChromaDB :**  Stores text embeddings for retrieving relevant documents. 
--  **Redis :** Maintains session-based chat history for users. 
--  **Langchain :** Helps in orchestrating LLM-based workflows.
 
-## Nodes & Tools in LangGraph
-The project consists of the following four nodes and one tool:
-- **grade_documents Node**
-- **support Node**
-- **agent Node**
-- **generate Node**
-- **retriever_tool (Tool for retrieving documents from ChromaDB)**
- ## State Management
- LangGraph is stateful, allowing the project to maintain conversation history efficiently. The state stores both human messages (user queries) and AI messages (chatbot responses).
-Additionally, user sessions are managed, where both the user's question and the chatbot's response are stored in Redis. The key for each entry is the user's session ID, while the value contains the chat history (user queries and bot responses).
-## Workflow Execution
-**1. Session Management**
+This included many irrelevant dependencies, causing lengthy Docker build times. Even after cleaning up the file manually, the performance didn’t improve significantly. As a result, Docker was excluded from the final setup.
 
-- **When a user submits a question, the backend checks if the request header contains a session ID.**
-- **If no session ID is found, a new one is generated and stored in a cookie to ensure that future user queries contain the same session ID.**
-- **This session ID helps in maintaining a continuous conversation by storing the chat history in Redis.**
+---
 
-**2. Retrieving Previous Chats**
-- **When a query is received, the backend extracts the session ID from the headers.**
-- **It then checks Redis to see if there is any existing chat history for that session.**
-- **If chat history exists, it is added to the LangGraph state, along with the new user query.**
+## 🏗 Architecture Overview
 
-**3. Processing the Query Using LangGraph**
-- **Once the question is added to the LangGraph state, the agent node is triggered.**
-- **The agent node retrieves relevant documents using retriever_tool, which fetches embeddings from ChromaDB.**
-- **These retrieved documents are also added to the LangGraph state.**
-- **The agent node then calls the grade_documents node.**
+This project uses a modular architecture powered by LangGraph, LangChain, Redis, and ChromaDB to build a context-aware conversational AI. The components interact to manage chat sessions, retrieve relevant information, and provide accurate responses.
 
-**Document Grading & Query Analysis**
-- **The grade_documents node evaluates whether the retrieved documents are relevant to the user's question.**
-- **It also checks whether the user query is similar to previous chat history.**
-- **If the query is relevant to chat history or retrieved documents, it proceeds to the generate node.**
-- **If not, it is sent to the support node.**
+---
 
-**Handling Responses**
-- **Support Node: If the chatbot does not have enough information to answer the query, the support node informs the user that it lacks relevant details and provides contact information for the support team.**
-  
-- **Generate Node: If the query is related to previous chat history or retrieved documents, the generate node formulates a response based on the chat history context and documents. The generated response is then delivered to the user.**
-  
+## 🔧 Technologies Used
 
-## Chatbot Analytics & Accuracy Tracking
-The project includes an analytics route to track chatbot performance, including:
-- **Total Questions Count:** Increment total_questions for every new user query.
-- **Categorizing Questions:** Identify the type of question (e.g., travel, support, or others) and update question_types.
-- **Detecting Repeat Questions:** Compare the current question with previous ones in the chat history and increment repeat_questions if a match is found..
-- **API Endpoint:** Fetch Analytics data from this api (BaseUrl/analytics).
+- **LangGraph** – Manages node-based flow execution
+- **LangChain** – Orchestrates LLM-based workflows
+- **ChromaDB** – Handles semantic search with vector embeddings
+- **Redis** – Stores session-level chat history
 
+---
+
+## 🧩 LangGraph Nodes & Tools
+
+- `grade_documents` – Assesses relevance of retrieved documents
+- `support` – Fallback for insufficient information
+- `agent` – Coordinates the flow and invokes retrieval logic
+- `generate` – Crafts final chatbot responses
+- `retriever_tool` – Retrieves documents from ChromaDB using embeddings
+
+---
+
+## 🗃 State & Session Management
+
+The chatbot maintains a structured state using LangGraph, which stores:
+
+- User queries
+- AI-generated replies
+- Relevant documents
+- Previous session history
+
+Redis stores session-specific chat logs identified via a session ID (stored in cookies). This allows the chatbot to maintain continuity across multiple queries from the same user.
+
+---
+
+## ⚙️ Workflow Breakdown
+
+### 1️⃣ Session Management
+
+- On each query, the backend checks for a session ID in headers.
+- If missing, it generates a new session ID and sets it in cookies.
+- This session ID is used to store/fetch user-specific chat history in Redis.
+
+### 2️⃣ Chat History Retrieval
+
+- Retrieves previous chat logs from Redis using the session ID.
+- Merges past messages with the current query before sending it to LangGraph.
+
+### 3️⃣ Query Flow Execution
+
+- The `agent` node triggers the `retriever_tool` to fetch context from ChromaDB.
+- Retrieved content is graded by the `grade_documents` node.
+- Based on grading, either `generate` or `support` node is called.
+
+### 4️⃣ Node Response Flow
+
+- **`generate` Node:** Responds with context-aware answers using retrieved documents and history.
+- **`support` Node:** Returns fallback response suggesting the user contact support due to insufficient data.
+
+---
+
+## 📊 Analytics & Tracking
+
+Analytics endpoint tracks usage data:
+
+- **Total Questions Asked** – Increments with each new query
+- **Type Categorization** – Classifies questions into categories (e.g., travel, support)
+- **Repeat Detection** – Detects if a query was already asked
+- **API Route:** `GET /analytics`
+
+---
+
+## 🚀 Future Improvements
+
+- Add Docker optimization with a slimmed-down virtual environment
+- Extend analytics to support time-based reports
+- Integrate with external APIs for broader context
+
+---
 
 
 

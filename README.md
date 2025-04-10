@@ -145,13 +145,6 @@ Analytics endpoint tracks usage data:
 - **Repeat Detection** – Detects if a query was already asked
 - **API Route:** `GET /analytics`
 
----
-
-## 🚀 Future Improvements
-
-- Add Docker optimization with a slimmed-down virtual environment
-- Extend analytics to support time-based reports
-- Integrate with external APIs for broader context
 
 ---
 

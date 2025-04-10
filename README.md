@@ -108,7 +108,6 @@ Additionally, user sessions are managed, where both the user's question and the 
   
 - **Generate Node: If the query is related to previous chat history or retrieved documents, the generate node formulates a response based on the chat history context and documents. The generated response is then delivered to the user.**
   
-![Architecture](https://res.cloudinary.com/dgejijgss/image/upload/v1743282967/vahan_project_Archte_image_jq3uui.jpg)
 
 ## Chatbot Analytics & Accuracy Tracking
 The project includes an analytics route to track chatbot performance, including:
@@ -117,7 +116,6 @@ The project includes an analytics route to track chatbot performance, including:
 - **Detecting Repeat Questions:** Compare the current question with previous ones in the chat history and increment repeat_questions if a match is found..
 - **API Endpoint:** Fetch Analytics data from this api (BaseUrl/analytics).
 
-![Architecture](https://res.cloudinary.com/dgejijgss/image/upload/v1743283276/vahan_project_analytics_tracking_k3vjzt.png)
 
 
 

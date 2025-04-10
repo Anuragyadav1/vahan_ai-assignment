@@ -1,36 +1,42 @@
-## Support AI Chatbot - Smart Conversational Assistant
-This project is an AI-powered chatbot designed to provide intelligent responses to user queries. It can understand user inputs, maintain context, and generate meaningful follow-up responses.
+# 🤖 Support AI Chatbot – Smart Conversational Assistant
+
+An intelligent, LLM-based chatbot engineered to handle user queries with context awareness, memory, and dynamic interaction flow. Designed to assist users of a fictional SaaS product, this project offers structured conversation management, query understanding, and insightful analytics.
 
 ![Chatbot UI](https://github.com/user-attachments/assets/0013de1f-8904-4b84-80cd-7cd63a948286)
 
-## 🚀 Key Features (Support AI Chatbot)
+---
 
--  **AI-Powered Chatbot** for answering user queries about a fictional SaaS product  
--  **Chat History Management** using Redis for efficient storage and retrieval  
--  **Real-time User Interaction Tracking** to monitor chatbot responses  
--  **Query Analytics** to evaluate chatbot performance and accuracy  
--  **Response Validation Mechanism** to assess how accurately the chatbot answers user queries  
--  **Session-Based Chat Storage** for retrieving past conversations  
--  **Redis-Based Caching** to improve chatbot response time
+## ✨ Features
+
+- 🧠 **Contextual AI Chatbot** built using LangGraph & LangChain  
+- 🕓 **Session-aware Conversations** powered by Redis  
+- 📊 **Analytics Dashboard** to monitor chatbot interactions  
+- 📂 **Document-Based Retrieval** using ChromaDB embeddings  
+- ✅ **Response Quality Checks** to ensure answer relevance  
+- ⚡ **Real-time Performance Insights** to track repeated questions, types, and more  
+- 🚀 **Caching Layer with Redis** to optimize response times
+
+---
+
+## 🧰 Tech Stack
+
+- **Backend:** FastAPI, Python, LangChain, LangGraph, HuggingFace, LLM  
+- **Storage:** Redis (chat history), ChromaDB (embeddings)  
+- **Containerization:** Docker & Docker Compose (optional)  
+- **Testing:** Postman  
+
+---
+
+## ⚙️ Getting Started
+
+### 🔄 Clone the Repository
+
+```bash
+git clone https://github.com/Anuragyadav1/vahan_ai-assignment
+cd Vahan_AI_Assignment
 
 
-## 🛠 Tech Stack
-
-- **Backend:** Python, FastAPI, LangChain, LangGraph,HuggingFace,LLM 
-- **Database:** Redis  
-- **Containerization:** Docker, Docker Compose  
-- **API Testing:** Postman
-
-## 🔧 Setup Instructions  
- 
-### Steps to Set Up the Project:  
-
-1. Clone the repository:  
-   ```sh
-   git clone https://github.com/Anuragyadav1/vahan_ai-assignment
-   cd Vahan_AI_Assignment
-
-
+##  Environment Setup
 2. Environment Variables 
 for backend folder `.env` file with the following variables:  
 

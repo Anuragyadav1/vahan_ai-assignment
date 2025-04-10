@@ -68,9 +68,9 @@ Backend:
 ```
 ## 🔧 Running Redis using Docker
 To run this project, Redis is required. If you have Docker installed, follow these quick steps:
+Open your terminal (PowerShell, Command Prompt, or VS Code terminal).
 
-## 🚀 Start Redis with Docker
-
+Run this command:
 docker run -d -p 6379:6379 --name redis-server redis
 
 

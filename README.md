@@ -42,7 +42,7 @@ for backend folder `.env` file with the following variables:
 
 ### **Backend (`backend/.env`)**
  
-```sh
+
 GROQ_API_KEY=<your groq api key>
 LANGCHAIN_API_KEY=<your langchain api key>
 LANGCHAIN_TRACING_V2=true

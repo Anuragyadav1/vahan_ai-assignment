@@ -1,7 +1,7 @@
 ## Support AI Chatbot - Smart Conversational Assistant
 This project is an AI-powered chatbot designed to provide intelligent responses to user queries. It can understand user inputs, maintain context, and generate meaningful follow-up responses.
 
-![Chatbot UI]([https://github.com/user-attachments/assets/0013de1f-8904-4b84-80cd-7cd63a948286])
+![Chatbot UI](https://github.com/user-attachments/assets/0013de1f-8904-4b84-80cd-7cd63a948286)
 
 ## 🚀 Key Features (Support AI Chatbot)
 

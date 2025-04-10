@@ -83,11 +83,6 @@ This project uses a modular architecture powered by LangGraph, LangChain, Redis,
 
 ---
 
-## 🔧 Technologies Used
-
-
-
----
 
 ## 🧩 LangGraph Nodes & Tools
 
@@ -130,11 +125,6 @@ Redis stores session-specific chat logs identified via a session ID (stored in c
 - The `agent` node triggers the `retriever_tool` to fetch context from ChromaDB.
 - Retrieved content is graded by the `grade_documents` node.
 - Based on grading, either `generate` or `support` node is called.
-
-### 4️⃣ Node Response Flow
-
-- **`generate` Node:** Responds with context-aware answers using retrieved documents and history.
-- **`support` Node:** Returns fallback response suggesting the user contact support due to insufficient data.
 
 ---
 

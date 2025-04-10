@@ -67,11 +67,10 @@ Backend:
 
 ```
 ## 🔧 Running Redis using Docker
-
 To run this project, Redis is required. If you have Docker installed, follow these quick steps:
 
-### 🚀 Start Redis with Docker
-```bash
+## 🚀 Start Redis with Docker
+
 docker run -d -p 6379:6379 --name redis-server redis
 
 

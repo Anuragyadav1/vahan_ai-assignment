@@ -9,8 +9,7 @@ An intelligent, LLM-based chatbot engineered to handle user queries with context
 ## ✨ Features
 
 - 🧠 **Contextual AI Chatbot** built using LangGraph & LangChain  
-- 🕓 **Session-aware Conversations** powered by Redis  
-- 📊 **Analytics Dashboard** to monitor chatbot interactions  
+- 🕓 **Session-aware Conversations** powered by Redis   
 - 📂 **Document-Based Retrieval** using ChromaDB embeddings  
 - ✅ **Response Quality Checks** to ensure answer relevance  
 - ⚡ **Real-time Performance Insights** to track repeated questions, types, and more  
@@ -40,7 +39,7 @@ cd Vahan_AI_Assignment
 2. Environment Variables 
 for backend folder `.env` file with the following variables:  
 
-### **Backend (`backend/.env`)**
+### Backend (`backend/.env`)
  
 
 GROQ_API_KEY=<your groq api key>

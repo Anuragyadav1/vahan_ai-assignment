@@ -46,12 +46,12 @@ GROQ_API_KEY=<your groq api key>
 LANGCHAIN_API_KEY=<your langchain api key>
 LANGCHAIN_TRACING_V2=true
 LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
-```
+
 3. Finally run the command to start project
-```sh
+
 For Backend:
 1. cd backend
-2. pip install -r requirement.txt
+2. pip install -r requirements.txt
 3. python main.py
 For Frontend:
 1. cd frontend

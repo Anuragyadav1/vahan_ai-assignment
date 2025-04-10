@@ -116,6 +116,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { SunIcon, MoonIcon, UserIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/solid';
+import ReactMarkdown from 'react-markdown';
+
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -127,6 +129,7 @@ const App = () => {
     if (!question.trim()) return;
 
     setResponses((prev) => [...prev, { text: question, type: 'user' }]);
+    setQuestion('');
     setLoading(true);
 
     try {
@@ -141,7 +144,7 @@ const App = () => {
         }
       );
       setResponses((prev) => [...prev, { text: response.data.answer, type: 'bot' }]);
-      setQuestion('');
+    
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -153,8 +156,10 @@ const App = () => {
     
     <div className={`${darkMode ? 'bg-gray-900' : 'bg-white'} min-h-screen flex flex-col`}>
       {/* Header */}
-      <header className={`flex items-center justify-between px-6 py-4 shadow-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-cyan-600 text-white'}`}>
-        <h1 className="text-xl sm:text-2xl font-semibold">Support Agent ChatBot</h1>
+      <header className={`flex items-center justify-between px-6 py-4 shadow-md 
+        ${darkMode ? 'bg-indigo-900 text-white' : 'bg-indigo-600 text-white'}`}>
+
+        <h1 className="text-xl sm:text-2xl font-semibold">Customer Support Agent</h1>
         <button
           onClick={() => setDarkMode(!darkMode)}
           className="p-2 rounded-md hover:bg-cyan-700 transition"
@@ -171,8 +176,8 @@ const App = () => {
               <div
                 className={`max-w-xs sm:max-w-md p-3 rounded-xl flex items-start space-x-2 ${
                   res.type === 'bot'
-                    ? `${darkMode ? 'bg-cyan-700 text-white' : 'bg-cyan-100 text-gray-800'}`
-                    : `${darkMode ? 'bg-gray-700 text-white' : 'bg-gray-200 text-gray-800'}`
+                    ? `${darkMode ? 'bg-blue-700 text-white' : 'bg-blue-100 text-gray-800'}`
+                    : `${darkMode ? 'bg-zinc-700 text-white' : 'bg-zinc-200 text-gray-800'}`
                 }`}
               >
                 <div className="pt-1">
@@ -182,7 +187,16 @@ const App = () => {
                     <UserIcon className="h-5 w-5 text-gray-800" />
                   )}
                 </div>
-                <p className="text-sm leading-relaxed">{res.text}</p>
+                {/* <p className="text-sm leading-relaxed">{res.text}</p> */}
+                <ReactMarkdown
+                  components={{
+                    p: ({ node, ...props }) => (
+                      <p className="text-sm leading-relaxed" {...props} />
+                    ),
+                  }}
+                >
+                  {res.text}
+               </ReactMarkdown>
               </div>
             </div>
           ))}
@@ -210,7 +224,7 @@ const App = () => {
           />
           <button
             onClick={handleSend}
-            className="px-4 py-2 bg-cyan-600 text-white text-sm rounded-lg hover:bg-cyan-700 transition"
+            className="px-4 py-2 bg-indigo-900 text-white text-sm rounded-lg hover:bg-cyan-700 transition"
           >
             Send
           </button>
@@ -218,9 +232,16 @@ const App = () => {
       </main>
 
       {/* Footer */}
-      <footer className={`text-center py-4 text-sm ${darkMode ? 'text-gray-500' : 'text-gray-600'}`}>
-        © 2025 Support Agent ChatBot
-      </footer>
+      <footer
+        className={`text-center py-4 text-sm border-t ${
+          darkMode
+            ? 'bg-gray-800 text-gray-400 border-gray-700'
+            : 'bg-gray-100 text-gray-600 border-gray-300'
+        }`}
+      >
+        <p>Made with 💬 by Support Agent ChatBot &copy; 2025</p>
+     </footer>
+
     </div>
   );
 };
